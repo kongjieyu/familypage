@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "berkshire";
+    src: url('./berkshireswash-regular.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto";
+    src: url('./Roboto-Regular-14.woff2');
+    font-weight: normal;
+    font-style: normal;
+}

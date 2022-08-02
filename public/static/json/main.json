@@ -1,0 +1,17 @@
+{
+	
+    "title": "Welcome to our family webpage",
+    "footer": "Thank  you for visiting !",
+    "mother_img":{
+        "name":"Elena",
+        "img_src":"./static/images/default-mother.png"
+    },
+    "father_img": {
+        "name":"Cris",
+        "img_src":"./static/images/default-father.png"
+    },
+    "daughter_img":{
+        "name":"Andreea",
+        "img_src":"./static/images/default-daughter.png"
+    }
+}
