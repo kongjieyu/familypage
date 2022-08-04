@@ -4,14 +4,23 @@
     "footer": "Thank  you for visiting !",
     "mother_img":{
         "name":"Elena",
+        "desc":"",
+        "color":"rgba(0, 167, 229, 1)",
+        "htmlUrl":"elena/elena.html",
         "img_src":"./static/images/default-mother.png"
     },
     "father_img": {
         "name":"Cris",
+        "desc":"",
+        "color":"rgba(8, 75, 110, 1)",
+        "htmlUrl":"cristianscalude/about/",
         "img_src":"./static/images/default-father.png"
     },
     "daughter_img":{
         "name":"Andreea",
+        "desc":"",
+        "color":"rgba(253, 194, 16, 1)",
+        "htmlUrl":"andreea",
         "img_src":"./static/images/default-daughter.png"
     }
 }

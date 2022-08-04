@@ -4,9 +4,10 @@
     <div class="content">
       <div v-for="(item,index) in page.list" :key="index">
           <div class="ctn_img"  :style="{'background-image':'url('+item.img_src+')'}" ></div>
-          <div class="ctn_name">{{item.name}}</div>
-          <a class="ctn_action"  :href="getUrl(item)">
-            <div :style="{backgroundColor:getColor(item)}">
+          <div class="ctn_name" :style="{'margin-bottom': item.desc ?'10px':'30px'}">{{item.name}}</div>
+          <div class="ctn_desc" v-if="item.desc">{{item.desc}}</div>
+          <a class="ctn_action"  :href="item.htmlUrl">
+            <div :style="{backgroundColor: item.color}">
               <span>{{info}}</span>
               <span></span>
             </div>
@@ -18,44 +19,48 @@
 </template>
 <script lang="ts" setup>
 import axios from "axios";
-import { onMounted, ref, reactive } from "vue";
+import { onMounted, ref, reactive, watchEffect, watch } from "vue";
 const page = reactive<any>({
   title:'',
   list:[],
   footer:''
 })
 const info = ref('Visit my page')
+const screenWidth = ref<any>()
 const getData = () => {
   try{
       axios.get('./static/json/main.json').then(response=>{
           const {data} = response
+          page.list = []
+          page.desc = data.desc
           page.title = data.title
           page.footer = data.footer
-          page.list = []
-          page.list.push(data.mother_img)
-          page.list.push(data.father_img)
-          page.list.push(data.daughter_img)
+          if(screenWidth.value < 700) {
+            page.list.push(data.father_img)
+            data.mother_img && page.list.push(data.mother_img)
+            data.daughter_img && page.list.push(data.daughter_img)
+          } else {
+            data.mother_img && page.list.push(data.mother_img)
+            data.father_img && page.list.push(data.father_img)
+            data.daughter_img && page.list.push(data.daughter_img)
+          }
       })
-    }catch{
-    }
-}
-
-const getColor = (data:any)=>{
-  const {name} = data
-  if(name==='Elena') return 'rgba(0, 167, 229, 1)'
-  if(name==='Cris') return 'rgba(8, 75, 110, 1)'
-  if(name==='Andreea') return 'rgba(253, 194, 16, 1)'
-}
-const getUrl = (data:any) => {
-  const {name} = data
-  if(name==='Elena') return 'elena/elena.html'
-  if(name==='Cris') return 'cristianscalude/about/'
-  if(name==='Andreea') return 'andreea'
+    }catch{}
 }
 
 onMounted(()=>{
-  getData()
+  screenWidth.value = document.body.clientWidth
+  window.onresize = () => {
+    return (() => {
+      screenWidth.value = document.body.clientWidth
+    })()
+  }
 })
+watch(()=>screenWidth.value,(newVal,oldVal)=>{
+  if(newVal){
+    getData()
+  }
+},{ deep: true })
 </script>
 <style lang="less">
 @import url(@/style/main.less);

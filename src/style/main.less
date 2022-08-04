@@ -29,10 +29,13 @@
                 // border: 1px solid rgba(166, 166, 166, 0.58);
                 box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 3px 6px rgba(0, 0, 0, 0.12);
             }
-            .ctn_name {
+            .ctn_name,.ctn_desc {
                 font-family: Roboto;
                 text-align: center;
                 color: rgba(128, 128, 128, 1);
+            }
+            .ctn_desc {
+                margin-right: 0;
             }
             .ctn_action {
                 div {
@@ -72,113 +75,15 @@
         font-weight: 400;
     }
 }
-@media screen and (min-width:700px) {  //用平板样式时此处改为920
-    .main {
-        justify-content: center;
-        .title {
-            font-size: 40px;
-            margin: 94px 0 74px 0;
-        }
-        .content {
-            min-width: 1200px;
-            margin: 0 auto;
-            div{
-                .ctn_img{
-                    width: 300px;
-                    height: 350px;
-                }
-                .ctn_name {
-                    font-size: 24px;
-                    margin: 20px 0 30px 0;
-                }
-                .ctn_action {
-                    div {
-                        width: 200px;
-                        height: 60px;
-                    }
-                }
-            }
-        }
-        .footer {
-            font-size: 36px;
-            margin: 76px 0 50px 0;
-        }
-    }
+@media screen and (min-width:1181px) {  //pc
+    @import url(@/style/pc.less);
 }
-// @media screen and (min-width:700px) and (max-width:920px){ //平板
-//     .main {
-//         .title {
-//             font-size: 3.7vw;
-//             margin: 9.8vw 0 7.8vw 0;
-//         }
-//         .content {
-//             div{
-//                 .ctn_img{
-//                     width: 21.6vw;
-//                     height: 24.2vw;
-//                 }
-//                 .ctn_name {
-//                     font-size: 1.8vw;
-//                     margin: 2.5vw 0 3vw 0;
-//                 }
-//                 .ctn_action {
-//                     div {
-//                         width: 14.4vw;
-//                         height: 4.1vw;
-//                         font-size: 1.4vw;
-//                     }
-//                 }
-//             }
-//         }
-//         .footer {
-//             font-size: 3.2vw;
-//             margin: 5.9vw 0 2.6vw 0;
-//         }
-//     }
-// }
-@media screen and (max-width:700px) {
-    .main {
-        padding: 0 20vw;
-        overflow-y:scroll ;
-        .title {
-            font-size: 5vw;
-            text-align: center;
-            margin: 9.8vw 0;
-        }
-        .content {
-            flex-wrap: wrap;
-            div{
-                margin-right: 0;
-                margin-bottom: 17vw;
-                .ctn_img{
-                    width: 57vw;
-                    height: 60vw;
-                }
-                .ctn_name {
-                    font-size: 4vw;
-                    margin: 4vw 0 ;
-                }
-                .ctn_action {
-                    div {
-                        width: 57vw;
-                        height: 11vw;
-                        font-size: 3.6vw;
-                    }
-                    span:last-child {
-                        border: solid;
-                        border-width: 0 1px 1px 0;
-                        padding: 3.5px;
-                        transform: rotate(-45deg);
-                        -webkit-transform: rotate(-45deg);
-                        margin-left: 11vw;
-                    }
-                }
-            }
-        }
-        .footer {
-            font-size: 4.7vw;
-            margin-bottom: 12vw;
-        }
-    }
-        
+@media screen and (max-width:700px) { //phone
+    @import url(@/style/phone.less);
+}
+@media screen and (max-width:1180px) and (min-width:700px) and (orientation:landscape ) {//pad横屏 
+    @import url(@/style/padLandscape.less);
+}
+@media screen and (max-width:1180px) and (min-width:700px) and (orientation:portrait ) {//pad竖屏
+    @import url(@/style/padPortrait.less);
 }
