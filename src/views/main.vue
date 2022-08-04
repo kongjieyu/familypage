@@ -8,7 +8,7 @@
           <div class="ctn_desc" v-if="item.desc">{{item.desc}}</div>
           <a class="ctn_action"  :href="item.htmlUrl">
             <div :style="{backgroundColor: item.color}">
-              <span>{{info}}</span>
+              <span>{{item.action}}</span>
               <span></span>
             </div>
           </a>
@@ -19,13 +19,12 @@
 </template>
 <script lang="ts" setup>
 import axios from "axios";
-import { onMounted, ref, reactive, watchEffect, watch } from "vue";
+import { onMounted, ref, reactive, watch } from "vue";
 const page = reactive<any>({
   title:'',
   list:[],
   footer:''
 })
-const info = ref('Visit my page')
 const screenWidth = ref<any>()
 const getData = () => {
   try{
@@ -36,7 +35,7 @@ const getData = () => {
           page.title = data.title
           page.footer = data.footer
           if(screenWidth.value < 700) {
-            page.list.push(data.father_img)
+            data.father_img && page.list.push(data.father_img)
             data.mother_img && page.list.push(data.mother_img)
             data.daughter_img && page.list.push(data.daughter_img)
           } else {

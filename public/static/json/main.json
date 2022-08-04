@@ -7,6 +7,7 @@
         "desc":"",
         "color":"rgba(0, 167, 229, 1)",
         "htmlUrl":"elena/elena.html",
+        "action":"Visit my page",
         "img_src":"./static/images/default-mother.png"
     },
     "father_img": {
@@ -14,6 +15,7 @@
         "desc":"",
         "color":"rgba(8, 75, 110, 1)",
         "htmlUrl":"cristianscalude/about/",
+        "action":"Visit my page",
         "img_src":"./static/images/default-father.png"
     },
     "daughter_img":{
@@ -21,6 +23,7 @@
         "desc":"",
         "color":"rgba(253, 194, 16, 1)",
         "htmlUrl":"andreea",
+        "action":"Visit my page",
         "img_src":"./static/images/default-daughter.png"
     }
 }
