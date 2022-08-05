@@ -34,15 +34,27 @@ const getData = () => {
           page.desc = data.desc
           page.title = data.title
           page.footer = data.footer
-          if( devide.value == 'phone' || devide.value == 'pad' && !isOrientation.value) {
+          if( devide.value == 'phone' || devide.value == 'pad' && isOrientation.value) {
             data.father_img && page.list.push(data.father_img)
             data.mother_img && page.list.push(data.mother_img)
             data.daughter_img && page.list.push(data.daughter_img)
           }
-          if( devide.value == 'pc' || devide.value == 'pad' && isOrientation.value){
+          if( devide.value == 'pc' || devide.value == 'pad' && !isOrientation.value){
             data.mother_img && page.list.push(data.mother_img)
             data.father_img && page.list.push(data.father_img)
             data.daughter_img && page.list.push(data.daughter_img)
+          }
+          if(devide.value == 'pad'){
+            page.list = []
+            if(isOrientation.value){ //竖屏
+              data.father_img && page.list.push(data.father_img)
+              data.mother_img && page.list.push(data.mother_img)
+              data.daughter_img && page.list.push(data.daughter_img)
+            }else{
+              data.mother_img && page.list.push(data.mother_img)
+              data.father_img && page.list.push(data.father_img)
+              data.daughter_img && page.list.push(data.daughter_img)
+            }
           }
       })
     }catch{}
@@ -75,20 +87,22 @@ const getOs = () => {
       devide.value = 'pc'
 		}
 }
-const isOrientation = ref()
+const isOrientation = ref(false)
+function orientationChange() {
+  if (window.orientation == 180 || window.orientation == 0) { 
+    isOrientation.value = true
+  } 
+  if (window.orientation == 90 || window.orientation == -90 ){ 
+    isOrientation.value = false
+  } 
+};
+window.addEventListener("orientationchange",orientationChange);
+
 onMounted(()=>{
-  getOs()
   screenWidth.value = document.body.clientWidth
-  window.addEventListener("orientationchange", function() {
-    if(window.orientation === 90){
-        isOrientation.value = true
-      }
-      if(window.orientation === 0){
-        isOrientation.value = false
-      }
-  }, false);
   window.onresize = () => {
     return (() => {
+      orientationChange()
       screenWidth.value = document.body.clientWidth
     })()
   }
@@ -96,21 +110,11 @@ onMounted(()=>{
 
 watch(()=>screenWidth.value,(newVal,oldVal)=>{
   if(newVal){
+    getOs()
+    orientationChange()
     getData()
   }
 },{ deep: true })
-
-// watch(()=>isOrientation.value,(newVal,oldVal)=>{
-//   if(newVal){
-//     getData()
-//   }
-// },{ deep: true })
-
-// watch(()=>devide.value,(newVal,oldVal)=>{
-//   if(newVal){
-//     getData()
-//   }
-// },{ deep: true })
 </script>
 <style lang="less">
 @import url(@/style/main.less);
