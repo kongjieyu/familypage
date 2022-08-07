@@ -35,25 +35,25 @@ const getData = () => {
           page.title = data.title
           page.footer = data.footer
           if( devide.value == 'phone' || devide.value == 'pad' && isOrientation.value) {
-            data.father_img && page.list.push(data.father_img)
-            data.mother_img && page.list.push(data.mother_img)
-            data.daughter_img && page.list.push(data.daughter_img)
+            data.cris && page.list.push(data.cris)
+            data.elena && page.list.push(data.elena)
+            data.andreea && page.list.push(data.andreea)
           }
           if( devide.value == 'pc' || devide.value == 'pad' && !isOrientation.value){
-            data.mother_img && page.list.push(data.mother_img)
-            data.father_img && page.list.push(data.father_img)
-            data.daughter_img && page.list.push(data.daughter_img)
+            data.elena && page.list.push(data.elena)
+            data.cris && page.list.push(data.cris)
+            data.andreea && page.list.push(data.andreea)
           }
           if(devide.value == 'pad'){
             page.list = []
             if(isOrientation.value){ //竖屏
-              data.father_img && page.list.push(data.father_img)
-              data.mother_img && page.list.push(data.mother_img)
-              data.daughter_img && page.list.push(data.daughter_img)
+              data.cris && page.list.push(data.cris)
+              data.elena && page.list.push(data.elena)
+              data.andreea && page.list.push(data.andreea)
             }else{
-              data.mother_img && page.list.push(data.mother_img)
-              data.father_img && page.list.push(data.father_img)
-              data.daughter_img && page.list.push(data.daughter_img)
+              data.elena && page.list.push(data.elena)
+              data.cris && page.list.push(data.cris)
+              data.andreea && page.list.push(data.andreea)
             }
           }
       })
