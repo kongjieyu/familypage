@@ -14,8 +14,8 @@
           </a>
       </div>
     </div>
-    <div class="footer">{{page.footer}}</div>
   </div>
+  <div class="footer">{{page.footer}}</div>
 </template>
 <script lang="ts" setup>
 import axios from "axios";

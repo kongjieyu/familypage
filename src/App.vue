@@ -6,11 +6,12 @@
 body {
   margin: 0;
   padding: 0;
+  height: 100vh;
   box-sizing: border-box; 
 }
 #app {
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
 }
 a {
   text-decoration: none;
